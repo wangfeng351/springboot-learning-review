@@ -1,19 +1,16 @@
 package com.soft1851.springboot.jpa.repository;
 
 import com.soft1851.springboot.jpa.model.cascade.Teacher;
+import com.soft1851.springboot.jpa.repository.test1.TeacherRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.persistence.Id;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @Description TODO
@@ -27,17 +24,20 @@ class TeacherRepositoryTest {
 
     @Autowired
     private TeacherRepository teacherRepository;
+    @Autowired
+    private  ClazzRepository clazzRepository;
+
     private String name = "test1";
     private String jobNumber = "1802333112";
     private String clazzName = "软件1852";
     @Test
     void findTeacherByJobNumberAndClazzName() {
-        log.info(teacherRepository.findTeacherByJobNumberAndClazzName(jobNumber, clazzName).toString());
+        log.info(teacherRepository.findTeacherByJobNumberAndName(jobNumber, clazzName).toString());
     }
 
     @Test
     void findByNameOrClazzName() {
-        log.info(teacherRepository.findByNameOrClazzName(name, clazzName).toString());
+        log.info(teacherRepository.findByName(name).toString());
     }
 
     @Test

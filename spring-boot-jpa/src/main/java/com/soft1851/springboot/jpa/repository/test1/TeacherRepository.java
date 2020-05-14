@@ -1,4 +1,4 @@
-package com.soft1851.springboot.jpa.repository;
+package com.soft1851.springboot.jpa.repository.test1;
 
 import com.soft1851.springboot.jpa.model.cascade.Teacher;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -27,14 +27,14 @@ public interface TeacherRepository extends JpaRepository<Teacher, Long> {
      * @param clazzName
      * @return
      */
-    Teacher findTeacherByJobNumberAndClazzName(String jobNumber, String clazzName);
+    Teacher findTeacherByJobNumberAndName(String jobNumber, String clazzName);
 
     /**
      * 使用Or查询数据视图
      * @param name
      * @return
      */
-    List<Teacher> findByNameOrClazzName(String name, String clazzName);
+    List<Teacher> findByName(String name);
 
     /**
      * 使用between查询两学号中间的数据集

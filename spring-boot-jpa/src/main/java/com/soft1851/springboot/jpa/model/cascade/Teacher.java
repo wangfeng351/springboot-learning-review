@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -21,7 +22,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 public class Teacher {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long teacherId;
 
     @Column(nullable = false)
@@ -30,9 +31,7 @@ public class Teacher {
     @Column(nullable = false)
     private String jobNumber;
 
-    @Column(nullable = false)
-    private String clazzName;
-
-    @Column(nullable = false)
-    private Timestamp createTime;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "clazz_id")
+    private Clazz clazz;
 }
