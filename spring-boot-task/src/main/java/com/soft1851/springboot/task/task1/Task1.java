@@ -16,7 +16,7 @@ public class Task1 {
     /**
      * 每5秒执行一次
      */
-    @Scheduled(cron = "5 * * * * ?")
+    //@Scheduled(cron = "5 * * * * ?")
     private void process() {
         System.out.println("this is scheduler task running " + (count++));
     }

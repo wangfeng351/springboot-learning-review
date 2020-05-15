@@ -19,7 +19,7 @@ public class Task2 {
     /**
      * fixedRate: 固定频率执行
      */
-    @Scheduled(fixedRate = 3000)
+    @Scheduled(fixedRate = 300000)
     public void reportCurrent() {
         System.out.println(Thread.currentThread().getName() +  "现在时间是：" + dtf.format(LocalDateTime.now()));
     }
@@ -27,7 +27,7 @@ public class Task2 {
     /**
      * fixedDelay: 固定延时
      */
-    @Scheduled(fixedDelay = 2000)
+    @Scheduled(fixedDelay = 200000)
     public void reportCurrentTime2() {
         System.out.println(Thread.currentThread().getName() + "现在时间是：" + dtf.format(LocalDateTime.now()));
     }
@@ -35,7 +35,7 @@ public class Task2 {
     /**
      * 第一次延迟3秒钟后执行，之后每2秒执行一次
      */
-    @Scheduled(initialDelay = 3000, fixedDelay = 2000)
+    //@Scheduled(initialDelay = 3000, fixedDelay = 2000)
     public void reportCurrentTime3() {
         System.out.println(Thread.currentThread().getName() + "现在时间是：" + dtf.format(LocalDateTime.now()));
     }
@@ -43,7 +43,7 @@ public class Task2 {
     /**
      * 通过cron表达式定义规则
      */
-    @Scheduled(cron = "0/5 * * * * *")
+    //@Scheduled(cron = "0/5 * * * * *")
     public void reportCurrentTime4() {
         System.out.println("现在时间是：" + dtf.format(LocalDateTime.now()));
     }
