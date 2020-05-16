@@ -8,6 +8,7 @@ import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.scheduling.support.CronTrigger;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -29,14 +30,17 @@ public class AutoTask implements SchedulingConfigurer {
 
     @Override
     public void configureTasks(ScheduledTaskRegistrar scheduledTaskRegistrar) {
-        scheduledTaskRegistrar.addTriggerTask(this::process,
-                triggerContext -> {
+        scheduledTaskRegistrar.addTriggerTask(
+                () -> {
+                    //需要做什么
+                }, triggerContext -> {
                     //这里就先查询子id为1的cron
                     String cron = cronRepository.findCronByCronIdEquals(1).getCron();
-                    log.info(cron);
-                    if (cron.isEmpty()) {
+                    //合法校验
+                    if (StringUtils.isEmpty(cron)) {
                         log.info("cron 为空");
                     }
+                    //返回执行周期
                     return new CronTrigger(cron).nextExecutionTime(triggerContext);
                 });
     }
