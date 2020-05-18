@@ -29,19 +29,12 @@ import java.util.concurrent.ScheduledFuture;
 @Slf4j
 @RequestMapping(value = "/api")
 public class TestController {
-
-    @GetMapping(value = "/hello")
-    public String test() {
-        return "hello";
-    }
-
     @Resource
     protected CronRepository cronRepository;
     private static int i = 0;
     /**
      * 线程池任务调度类，能够开启线程池进行任务调度
      */
-
     @Resource
     private ThreadPoolTaskScheduler threadPoolTaskScheduler;
 
@@ -50,7 +43,6 @@ public class TestController {
     public ThreadPoolTaskScheduler threadPoolTaskScheduler() {
         return new ThreadPoolTaskScheduler();
     }
-
     //接受任务的返回结果
     private static ConcurrentHashMap<String, ScheduledFuture> map = new ConcurrentHashMap<>();
     private ScheduledFuture<?> future;

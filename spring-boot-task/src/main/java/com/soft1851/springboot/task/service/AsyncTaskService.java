@@ -24,21 +24,18 @@ public class AsyncTaskService {
         log.info("处理数据中");
     }
 
+    @Async
     public void boiledRice() {
         try {
-            Thread.sleep(5000);
-            System.out.println("煮米饭中 ！！！");
+            log.info("淘米中");
+            Thread.sleep(3000);
+            log.info("煮米饭中 ！！！");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
     public void cooking() {
-        try {
-            Thread.sleep(5000);
-            System.out.println("正在烧菜！！！");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        log.info("正在烧菜！！！");
     }
 }

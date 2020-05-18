@@ -20,14 +20,14 @@ import java.util.Set;
  * @Date 2020/5/16
  * @Version 1.0
  */
-@Configuration
+//@Configuration
 public class TrustedPortConfiguration {
 
     // 提供给外部接口使用的端口
     @Value("${server.port}")
     private String serverPort;
 
-    @Value("${management.port:${server.port}}")
+    @Value("${management.port:${server.port:8080}}")
     private String managementPort;
 
     // 提供给内部接口使用的端口

@@ -22,7 +22,8 @@ public class AsyncTaskController {
 
     @RequestMapping("/asyncTask")
     public String asyncTask() {
-        asyncTaskService.asyncTask();
+        asyncTaskService.boiledRice();
+        asyncTaskService.cooking();
         return "测试异步任务";
     }
 }
